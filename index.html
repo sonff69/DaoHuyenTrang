@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Huyền Trang | Digital Portfolio</title>
-    <!-- Nhập các font chữ tương thích tiếng Việt hoàn hảo, không bị lỗi hiển thị dấu -->
+    <!-- Nhập font chữ Nunito hỗ trợ tiếng Việt 100% hoàn hảo và mượt mà -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -21,33 +21,33 @@
             --color-green-dark: #4E9A6F;
             --text-dark: #4A3E3D;
             --text-muted: #7A6F6E;
-            --bg-glass: rgba(255, 255, 255, 0.9);
+            --bg-glass: rgba(255, 255, 255, 0.92);
             --border-glass: rgba(255, 255, 255, 0.6);
         }
 
+        /* Áp dụng cứng font Nunito toàn trang để triệt tiêu lỗi font chữ tiếng Việt */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Quicksand', sans-serif;
+            font-family: 'Nunito', sans-serif !important;
             scroll-behavior: smooth;
         }
 
         body {
-            background-image: linear-gradient(rgba(255, 253, 240, 0.92), rgba(253, 235, 240, 0.92)), url('back.jpg');
+            background-image: linear-gradient(rgba(255, 253, 240, 0.93), rgba(253, 235, 240, 0.93)), url('back.jpg');
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
             color: var(--text-dark);
             overflow-x: hidden;
             position: relative;
-            line-height: 1.8; /* Ngăn lỗi dính dấu tiếng Việt */
+            line-height: 1.8; /* Khoảng cách dòng rộng rãi bảo đảm hiển thị dấu tiếng Việt sắc nét */
         }
 
-        h1, h2, h3, h4, h5, .brand-name {
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
+        h1, h2, h3, h4, h5, h6, .brand-name {
+            font-weight: 800;
+            line-height: 1.4;
         }
 
         /* --- Custom Scrollbar --- */
@@ -106,14 +106,14 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         nav a {
             text-decoration: none;
             color: var(--text-dark);
-            font-weight: 600;
-            font-size: 15px;
+            font-weight: 700;
+            font-size: 14px;
             padding: 8px 16px;
             border-radius: 20px;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -140,7 +140,7 @@
             overflow: hidden;
             cursor: pointer;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13.5px;
         }
 
         .btn-drive::after {
@@ -246,7 +246,7 @@
         .hero-tag {
             background: var(--color-blue);
             color: var(--blue-dark);
-            font-weight: 700;
+            font-weight: 800;
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -267,7 +267,7 @@
 
         .hero-desc {
             font-size: 16px;
-            line-height: 1.7;
+            line-height: 1.8;
             color: var(--text-muted);
             margin-bottom: 24px;
         }
@@ -444,7 +444,7 @@
 
         .proj-num {
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 12px;
@@ -462,9 +462,9 @@
         }
 
         .proj-excerpt {
-            font-size: 14px;
+            font-size: 14.5px;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 24px;
         }
 
@@ -481,7 +481,7 @@
 
         .proj-tag {
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
             padding: 4px 10px;
             border-radius: 12px;
             background: rgba(255,255,255,0.6);
@@ -513,7 +513,7 @@
         }
 
         .reflect-container {
-            max-width: 950px;
+            max-width: 1000px;
             margin: 0 auto;
             background: var(--bg-glass);
             border: 2px solid var(--border-glass);
@@ -533,35 +533,36 @@
         .star-bottom-right { bottom: -20px; right: -20px; color: var(--color-yellow-dark); }
 
         .reflect-quote {
-            font-size: 18px;
+            font-size: 19px;
             font-style: italic;
             text-align: center;
-            line-height: 1.6;
+            line-height: 1.8;
             margin-bottom: 30px;
             color: var(--color-pink-dark);
-            font-weight: 600;
+            font-weight: 800;
         }
 
         .reflect-p {
-            font-size: 15px;
+            font-size: 15.5px;
             line-height: 1.8;
             color: var(--text-dark);
             margin-bottom: 20px;
             text-align: justify;
         }
 
+        /* Phần tổng kết chi tiết gấp 3 */
         .reflect-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
 
         .reflect-box {
             border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.02);
-            border: 1px solid rgba(255,255,255,0.6);
+            padding: 28px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+            border: 1.5px solid rgba(255,255,255,0.7);
         }
 
         .reflect-box.yellow { background: var(--color-yellow); border-left: 6px solid var(--color-yellow-dark); }
@@ -569,21 +570,24 @@
         .reflect-box.pink { background: var(--color-pink); border-left: 6px solid var(--color-pink-dark); }
 
         .reflect-box h4 {
-            font-size: 17px;
-            margin-bottom: 10px;
+            font-size: 18px;
+            margin-bottom: 15px;
             color: var(--text-dark);
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+            padding-bottom: 10px;
         }
 
         .reflect-box ul {
             list-style: none;
-            font-size: 13.5px;
-            line-height: 1.7;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
         .reflect-box li {
-            margin-bottom: 8px;
+            margin-bottom: 14px;
             position: relative;
-            padding-left: 18px;
+            padding-left: 20px;
+            text-align: justify;
         }
 
         .reflect-box li::before {
@@ -678,7 +682,7 @@
         }
 
         .modal-body {
-            font-size: 15px;
+            font-size: 15.5px;
             line-height: 1.8;
             color: var(--text-dark);
         }
@@ -888,7 +892,7 @@
             background-color: var(--color-pink);
             transform: rotateY(180deg);
             color: var(--text-dark);
-            font-size: 13px;
+            font-size: 13.5px;
             line-height: 1.6;
         }
 
@@ -913,7 +917,7 @@
             background: var(--color-blue);
             cursor: pointer;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 13.5px;
             transition: all 0.2s;
         }
         .prompt-tab.active {
@@ -922,7 +926,7 @@
         }
         .prompt-tab-content {
             display: none;
-            font-size: 13.5px;
+            font-size: 14px;
             background: #F8F9FA;
             padding: 20px;
             border-radius: 16px;
@@ -935,7 +939,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 12px;
-            font-size: 13px;
+            font-size: 13.5px;
         }
         .prompt-comparison-table th, .prompt-comparison-table td {
             border: 1px solid #ddd;
@@ -956,17 +960,47 @@
             background: #fff;
             padding: 18px;
             border-radius: 20px;
-            border: 1px dashed var(--text-muted);
+            border: 1.5px dashed var(--text-muted);
         }
         .meta-card h5 {
-            font-size: 14px;
+            font-size: 14.5px;
             margin-bottom: 6px;
             color: var(--text-dark);
         }
         .meta-card p {
-            font-size: 13px;
+            font-size: 13.5px;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.7;
+        }
+
+        /* Timeline for Task 4 */
+        .collab-timeline {
+            position: relative;
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+        .collab-timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--color-yellow-dark);
+        }
+        .timeline-step {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 15px;
+        }
+        .timeline-step::before {
+            content: '●';
+            position: absolute;
+            left: -19px;
+            top: 0;
+            color: var(--color-yellow-dark);
+            font-size: 14px;
+            background: #FFFDF8;
         }
 
         /* --- CSS Animation Keyframes --- */
@@ -1072,7 +1106,7 @@
             <h3 style="font-size: 20px; display: flex; align-items: center; gap: 8px;">
                 <span style="color: var(--color-pink-dark);">✦</span> Mục tiêu thiết lập Portfolio
             </h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-top: 6px; line-height: 1.6;">
+            <p style="font-size: 14.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.8;">
                 Dự án cá nhân này được thiết kế để tích hợp, lưu trữ trực quan và hệ thống hóa năng lực công nghệ số của bản thân nhằm hướng tới các mục tiêu:
             </p>
             <div class="obj-grid">
@@ -1223,31 +1257,32 @@
                 "Công nghệ chỉ là công cụ nhân lên sức sáng tạo, bản lĩnh của chúng ta nằm ở tư duy độc lập và cái tâm học tập trung thực."
             </p>
 
+            <!-- Phần tổng kết chi tiết gấp 3 -->
             <div class="reflect-grid">
                 <div class="reflect-box yellow">
-                    <h4>👍 Thuận lợi lớn nhất</h4>
+                    <h4>👍 Hệ sinh thái Thuận lợi (Enablers)</h4>
                     <ul>
-                        <li><strong>Hạ tầng đồng bộ:</strong> Hệ thống thư viện số phong phú từ VNU cùng tài liệu hướng dẫn cực kỳ trực quan của học phần Nhập môn Công nghệ số.</li>
-                        <li><strong>Sự hỗ trợ tuyệt vời:</strong> Đội ngũ giảng viên hỗ trợ tận tình và tập thể nhóm cộng tác đầy nhiệt huyết, sẵn sàng thích ứng cái mới.</li>
-                        <li><strong>Công cụ miễn phí:</strong> Các nền tảng như Google Suite, ClickUp hay ChatGPT miễn phí giúp việc học tập, thực hành trở nên thuận lợi hơn bao giờ hết.</li>
+                        <li><strong>Hạ tầng VNU/ULIS xuất sắc:</strong> Mình được thừa hưởng một môi trường học tập số hoàn thiện, hệ thống tài liệu hướng dẫn học phần Nhập môn Công nghệ số vô cùng tường tận, cùng kho dữ liệu nghiên cứu khoa học phong phú từ thư viện số VNU để thẩm định thông tin khoa học ở Bài tập 2.</li>
+                        <li><strong>Nền tảng công cụ đột phá:</strong> Sự xuất hiện của các giải pháp đám mây miễn phí chất lượng cao như Google Workspace, ClickUp, ChatGPT và Gemini đã san phẳng các rào cản kỹ thuật. Công cụ thông minh cho phép một sinh viên chuyên ngành ngoại ngữ như mình có thể tiếp cận tư duy quản trị dự án, thiết kế và phân tích dữ liệu chỉ trong vài tuần.</li>
+                        <li><strong>Sức mạnh của sự cộng tác:</strong> Sự đồng hành tích cực của các thành viên trong nhóm nghiên cứu đề tài "Múa rối nước" là chất xúc tác cực lớn. Chúng mình đã cùng nhau thực hành, chia sẻ kinh nghiệm sử dụng công cụ số, từ đó biến những bỡ ngỡ ban đầu thành chuỗi kết quả thực hành bài bản.</li>
                     </ul>
                 </div>
 
                 <div class="reflect-box blue">
-                    <h4>⚠️ Những khó khăn đã đối diện</h4>
+                    <h4>⚠️ Rào cản & Thách thức thực tế (Obstacles)</h4>
                     <ul>
-                        <li><strong>Học khúc dốc ban đầu:</strong> Chuyển sang làm việc với ClickUp và tư duy thiết lập hệ thống tệp tin macOS lúc đầu còn nhiều bỡ ngỡ.</li>
-                        <li><strong>Thách thức viết Prompt:</strong> Rất khó để yêu cầu AI viết ra nội dung sâu sắc nếu bản thân không am hiểu cấu trúc logic học thuật.</li>
-                        <li><strong>Bẫy ỷ lại:</strong> Ranh giới giữa tham khảo và lười biếng tư duy rất mong manh, đòi hỏi sự kỷ luật bản thân cực độ.</li>
+                        <li><strong>Dốc cao kỹ thuật ban đầu:</strong> Thách thức lớn nhất trong những ngày đầu là tư duy hệ thống. Việc thiết lập đường dẫn tệp tin, phím tắt thao tác nhanh trên macOS (Bài tập 1) hay cấu trúc hóa các cột Kanban quản lý tác vụ (Bài tập 4) đòi hỏi sự thay đổi hoàn toàn thói quen lưu trữ lộn xộn trước đây của mình.</li>
+                        <li><strong>Bẫy ỷ lại và ảo giác tri thức:</strong> Khi mới làm việc với Generative AI, mình rất dễ rơi vào bẫy "sử dụng thụ động" — nhận kết quả thô và copy-paste. Để vượt qua thử thách này, mình đã phải rèn luyện bộ óc hoài nghi khoa học, liên tục phát hiện lỗi "ảo giác" (hallucination) của AI và cặm cụi đối chiếu độc lập trên Google Scholar để xác minh tính chuẩn xác.</li>
+                        <li><strong>Khó khăn dung hòa tiếng nói nhóm:</strong> Việc quản lý tiến độ không đồng bộ trên ClickUp đôi khi gây áp lực cho các thành viên. Việc biên tập văn phong hỗn hợp từ nhiều người viết trên Google Docs thành một báo cáo khoa học thống nhất đòi hỏi sự kiên trì, khéo léo điều phối của người trưởng nhóm.</li>
                     </ul>
                 </div>
 
                 <div class="reflect-box pink">
-                    <h4>🎓 Bài học đắt giá nhất</h4>
+                    <h4>🎓 Bài học Sư phạm Vàng (Pedagogical Lessons)</h4>
                     <ul>
-                        <li><strong>Tư duy đi trước công nghệ:</strong> Luôn động não suy nghĩ, lập dàn ý độc lập trước khi mở bất kỳ ứng dụng AI nào hỗ trợ.</li>
-                        <li><strong>Hợp tác là sức mạnh:</strong> Kỹ năng giao tiếp trực tuyến và tinh thần lãnh đạo minh bạch giúp xử lý dự án nhanh gấp nhiều lần tự làm.</li>
-                        <li><strong>Học tập là trọn đời:</strong> Việc thích ứng linh hoạt và liên tục rèn luyện kỹ năng số là chìa khóa vàng của một giáo viên tương lai.</li>
+                        <li><strong>Nguyên tắc "Human-in-the-Loop":</strong> AI chỉ là một cộng sự, một chiếc Co-pilot cần mẫn hỗ trợ tìm kiếm cấu trúc. Giá trị cốt lõi, chiều sâu cảm xúc và tính nhân văn của sản phẩm cuối cùng luôn nằm ở tư duy phản biện và sự gọt giũa tỉ mỉ của con người (như cách mình tự viết lại bài viết FOMO ở Bài tập 5).</li>
+                        <li><strong>Định hình phương pháp sư phạm tương lai:</strong> Học phần này đã tái định nghĩa lại cách mình nhìn nhận một lớp học tiếng Anh. Công nghệ số giúp người giáo viên tương lai biến những bài học ngữ pháp khô khan thành các chuỗi hoạt động sáng tạo nội dung đa phương tiện, các blog tâm lý sinh động và bộ đề kiểm tra phân hóa khoa học.</li>
+                        <li><strong>Bản lĩnh số và Liêm chính học thuật:</strong> Trở thành một công dân số thông thái không chỉ là dùng công cụ giỏi, mà là biết dùng công cụ một cách đạo đức. Bộ 6 nguyên tắc liêm chính mình tự xây dựng ở Bài tập 6 chính là chiếc la bàn đạo đức giúp mình luôn làm chủ công nghệ thay vì để công nghệ lười hóa tư duy độc lập của mình.</li>
                     </ul>
                 </div>
             </div>
