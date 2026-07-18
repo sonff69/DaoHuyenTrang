@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Huyền Trang | Digital Portfolio</title>
-    <!-- Nhập các font chữ bo tròn mềm mại và hiện đại -->
+    <!-- Nhập các font chữ tương thích tiếng Việt hoàn hảo, không bị lỗi hiển thị dấu -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -21,8 +21,8 @@
             --color-green-dark: #4E9A6F;
             --text-dark: #4A3E3D;
             --text-muted: #7A6F6E;
-            --bg-glass: rgba(255, 255, 255, 0.85);
-            --border-glass: rgba(255, 255, 255, 0.5);
+            --bg-glass: rgba(255, 255, 255, 0.9);
+            --border-glass: rgba(255, 255, 255, 0.6);
         }
 
         * {
@@ -34,23 +34,25 @@
         }
 
         body {
-            background-image: linear-gradient(rgba(255, 253, 240, 0.9), rgba(253, 235, 240, 0.9)), url('back.jpg');
+            background-image: linear-gradient(rgba(255, 253, 240, 0.92), rgba(253, 235, 240, 0.92)), url('back.jpg');
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
             color: var(--text-dark);
             overflow-x: hidden;
             position: relative;
+            line-height: 1.8; /* Ngăn lỗi dính dấu tiếng Việt */
         }
 
         h1, h2, h3, h4, h5, .brand-name {
             font-family: 'Fredoka', sans-serif;
             font-weight: 600;
+            line-height: 1.3;
         }
 
         /* --- Custom Scrollbar --- */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         ::-webkit-scrollbar-track {
             background: var(--color-yellow);
@@ -58,6 +60,7 @@
         ::-webkit-scrollbar-thumb {
             background: var(--color-pink-dark);
             border-radius: 10px;
+            border: 2px solid var(--color-yellow);
         }
 
         /* --- Header & Navigation --- */
@@ -297,7 +300,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* --- Portfolio Objectives (Mục tiêu) --- */
+        /* --- Portfolio Objectives --- */
         #objectives {
             max-width: 1000px;
             margin: 0 auto;
@@ -371,7 +374,7 @@
             margin-top: 10px;
         }
 
-        /* --- Assignments Section --- */
+        /* --- Projects Section --- */
         #projects {
             padding: 60px 20px;
             max-width: 1200px;
@@ -630,7 +633,7 @@
             background: #FFFDF8;
             border-radius: 40px;
             width: 92%;
-            max-width: 900px;
+            max-width: 950px;
             max-height: 85vh;
             overflow-y: auto;
             border: 4px solid var(--color-pink);
@@ -687,41 +690,209 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 2px solid var(--color-pink);
             padding-bottom: 6px;
         }
 
         /* --- Dynamic Components Inside Modal --- */
-        .academic-grid {
+        
+        /* CSS Folder Tree for Task 1 */
+        .folder-tree {
+            background: #fdfbf7;
+            border: 2px solid var(--color-yellow-dark);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .tree-item {
+            margin-left: 20px;
+            position: relative;
+            padding-left: 15px;
+            line-height: 2;
+        }
+        .tree-item::before {
+            content: "├──";
+            position: absolute;
+            left: -15px;
+            color: var(--color-blue-dark);
+        }
+        .tree-item.last::before {
+            content: "└──";
+        }
+        .tree-folder {
+            font-weight: bold;
+            color: #4a3e3d;
+        }
+        .tree-file {
+            color: #7a6f6e;
+        }
+        .tree-trash {
+            color: var(--color-pink-dark);
+            font-style: italic;
+        }
+
+        /* Source Explorer for Task 2 */
+        .source-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
             margin-top: 15px;
         }
-
-        .academic-card {
+        .source-card-interactive {
             background: #fff;
-            border: 1px solid #e1e8ed;
-            border-radius: 16px;
-            padding: 16px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            transition: all 0.2s;
+            border: 2px solid #e1e8ed;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
-
-        .academic-card:hover {
-            transform: scale(1.02);
+        .source-card-interactive:hover {
+            transform: translateY(-4px);
             border-color: var(--color-pink-dark);
+            box-shadow: 0 8px 24px rgba(255, 142, 158, 0.15);
         }
-
-        .academic-badge {
-            font-size: 10px;
-            font-weight: 700;
+        .source-card-interactive h5 {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        .source-card-interactive p.citation {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .source-criteria-badge {
+            font-size: 9.5px;
+            font-weight: bold;
             padding: 3px 8px;
-            border-radius: 10px;
+            border-radius: 8px;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+        .source-commentary {
+            background: #fdfdfd;
+            border-top: 1px dashed #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+            font-size: 12.5px;
+            color: #555;
+            line-height: 1.6;
         }
 
+        /* Kanban Board for Task 4 */
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .kanban-column {
+            background: #f7f9fa;
+            border-radius: 20px;
+            padding: 15px;
+            border: 1.5px solid #e2e8f0;
+        }
+        .kanban-column h5 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid;
+            display: flex;
+            justify-content: space-between;
+        }
+        .kanban-column.todo h5 { border-bottom-color: var(--color-pink-dark); color: var(--color-pink-dark); }
+        .kanban-column.inprogress h5 { border-bottom-color: var(--color-yellow-dark); color: var(--color-yellow-dark); }
+        .kanban-column.done h5 { border-bottom-color: var(--color-green-dark); color: var(--color-green-dark); }
+        
+        .kanban-task {
+            background: #fff;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.02);
+            border-left: 4px solid;
+        }
+        .kanban-task.todo { border-left-color: var(--color-pink-dark); }
+        .kanban-task.inprogress { border-left-color: var(--color-yellow-dark); }
+        .kanban-task.done { border-left-color: var(--color-green-dark); }
+        
+        .kanban-task p.title {
+            font-size: 12.5px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .kanban-task p.assignee {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Flipping Ethics Cards for Task 6 */
+        .flip-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .flip-card {
+            background: transparent;
+            width: 100%;
+            height: 180px;
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .flip-card-front {
+            background-color: #fff;
+            border: 2px solid var(--color-pink);
+            color: var(--text-dark);
+        }
+        .flip-card-front h5 {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .flip-card-back {
+            background-color: var(--color-pink);
+            transform: rotateY(180deg);
+            color: var(--text-dark);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Dynamic Prompt Comparison */
         .prompt-interactive-box {
             background: #fff;
             border-radius: 24px;
@@ -729,14 +900,12 @@
             padding: 24px;
             margin-top: 15px;
         }
-
         .prompt-tab-headers {
             display: flex;
             gap: 10px;
             margin-bottom: 15px;
             flex-wrap: wrap;
         }
-
         .prompt-tab {
             padding: 8px 16px;
             border-radius: 12px;
@@ -747,12 +916,10 @@
             font-size: 13px;
             transition: all 0.2s;
         }
-
         .prompt-tab.active {
             background: var(--color-blue-dark);
             color: #fff;
         }
-
         .prompt-tab-content {
             display: none;
             font-size: 13.5px;
@@ -761,102 +928,41 @@
             border-radius: 16px;
             border-left: 4px solid var(--color-blue-dark);
         }
-
         .prompt-tab-content.active {
             display: block;
         }
-
         .prompt-comparison-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 12px;
             font-size: 13px;
         }
-
         .prompt-comparison-table th, .prompt-comparison-table td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
         }
-
         .prompt-comparison-table th {
             background-color: var(--color-blue);
         }
 
-        /* Timeline for Task 4 */
-        .collab-timeline {
-            position: relative;
-            padding-left: 20px;
-            margin-top: 15px;
-        }
-
-        .collab-timeline::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: var(--color-yellow-dark);
-        }
-
-        .timeline-step {
-            position: relative;
-            margin-bottom: 20px;
-            padding-left: 15px;
-        }
-
-        .timeline-step::before {
-            content: '●';
-            position: absolute;
-            left: -19px;
-            top: 0;
-            color: var(--color-yellow-dark);
-            font-size: 14px;
-            background: #FFFDF8;
-        }
-
-        /* Ethics Grid task 6 */
-        .ethics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .ethic-item {
-            background: var(--color-yellow);
-            padding: 15px;
-            border-radius: 16px;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .ethic-item h5 {
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        /* Highlight Boxes inside assignments */
         .meta-card-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
             margin: 20px 0;
         }
-
         .meta-card {
             background: #fff;
             padding: 18px;
             border-radius: 20px;
             border: 1px dashed var(--text-muted);
         }
-
         .meta-card h5 {
             font-size: 14px;
             margin-bottom: 6px;
             color: var(--text-dark);
         }
-
         .meta-card p {
             font-size: 13px;
             color: var(--text-muted);
@@ -868,19 +974,16 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-
         @keyframes shine {
             0% { left: -100%; }
             50% { left: 100%; }
             100% { left: 100%; }
         }
-
         @keyframes blobby {
             0% { border-radius: 35% 65% 55% 45% / 45% 45% 55% 55%; }
             50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; }
             100% { border-radius: 35% 65% 55% 45% / 45% 45% 55% 55%; }
         }
-
         @keyframes pulse {
             0% { transform: scale(1); opacity: 0.6; }
             100% { transform: scale(1.15); opacity: 1; }
@@ -940,7 +1043,7 @@
                 <span class="hero-tag">Nhập môn Công nghệ số & AI</span>
                 <h1 class="hero-title">Đào Huyền Trang</h1>
                 <p class="hero-desc">
-                    Chào bạn! Mình là cô sinh viên chuyên ngành Sư phạm Tiếng Anh tại Trường Đại học Ngoại Ngữ - ĐHQGHN (ULIS). Website này là một Digital Portfolio - cuốn nhật ký số sống động lưu giữ hành trình hoàn thiện bản thân, mở rộng tư duy và làm chủ công nghệ một cách nghiêm túc và đạo đức.
+                    Chào mừng bạn đến với Digital Portfolio của mình! Đây là góc nhỏ lấp lánh lưu giữ hành trình hoàn thiện kỹ năng số và định hình bản sắc của một giáo viên tương lai tại Trường Đại học Ngoại Ngữ - ĐHQGHN. Hãy cùng khám phá nỗ lực của mình qua các sản phẩm bên dưới nhé!
                 </p>
                 
                 <div class="hero-meta">
@@ -970,20 +1073,20 @@
                 <span style="color: var(--color-pink-dark);">✦</span> Mục tiêu thiết lập Portfolio
             </h3>
             <p style="font-size: 14px; color: var(--text-muted); margin-top: 6px; line-height: 1.6;">
-                Dự án cá nhân này được kiến tạo như một không gian lưu trữ và phản ánh trực quan năng lực công nghệ số của bản thân.
+                Dự án cá nhân này được thiết kế để tích hợp, lưu trữ trực quan và hệ thống hóa năng lực công nghệ số của bản thân nhằm hướng tới các mục tiêu:
             </p>
             <div class="obj-grid">
                 <div class="obj-item">
                     <h4>Hệ thống hóa học tập</h4>
-                    <p>Tổng hợp, ghi chép và hệ thống hóa lại toàn bộ chuỗi sản phẩm ứng dụng thực tế từ Bài tập 1 đến Bài tập 6.</p>
+                    <p>Tổng hợp, ghi chép và cấu trúc hóa lại toàn bộ chuỗi sản phẩm ứng dụng thực tế từ Bài tập 1 đến Bài tập 6 một cách khoa học.</p>
                 </div>
                 <div class="obj-item" style="border-left-color: var(--color-blue-dark);">
-                    <h4>Sư phạm số thời đại mới</h4>
-                    <p>Hình thành phản xạ tư duy kết hợp hài hòa ngoại ngữ và công nghệ số để sẵn sàng bước vào lớp học tương lai.</p>
+                    <h4>Sư phạm số tương lai</h4>
+                    <p>Chuẩn bị kỹ năng tích hợp ngôn ngữ với công nghệ số, sẵn sàng cho việc giảng dạy và sáng tạo nội dung trong thời đại mới.</p>
                 </div>
                 <div class="obj-item" style="border-left-color: var(--color-green-dark);">
                     <h4>Phát triển liêm chính</h4>
-                    <p>Thực hành và duy trì bộ nguyên tắc cá nhân trong tương tác AI, bảo vệ đạo đức khoa học và tính nguyên bản.</p>
+                    <p>Xây dựng thói quen tương tác có trách nhiệm với các công cụ trí tuệ nhân tạo, bảo vệ nghiêm ngặt bản quyền và đạo đức học thuật.</p>
                 </div>
             </div>
         </div>
@@ -992,8 +1095,8 @@
     <!-- --- Projects Section --- -->
     <section id="projects">
         <div class="section-header">
-            <h2 class="section-title">Hành trình Học tập & Sáng tạo</h2>
-            <p class="section-desc">Toàn bộ kho tàng sản phẩm cá nhân được xây dựng chi tiết, bài bản và giàu trải nghiệm.</p>
+            <h2 class="section-title">Kho tàng Sản phẩm cá nhân</h2>
+            <p class="section-desc">Toàn bộ chuỗi bài tập thực hành được thiết lập chi tiết, bài bản và lấp lánh tính tương tác.</p>
         </div>
 
         <div class="projects-intro-card">
@@ -1011,7 +1114,7 @@
             <div class="project-card" onclick="openProject(1)">
                 <div>
                     <span class="proj-num pink">Bài tập 1 • Quản lý tệp tin</span>
-                    <h3 class="proj-title">Làm chủ Thư mục & Hệ thống lưu trữ</h3>
+                    <h3 class="proj-title">Cấu trúc hóa Hệ thống lưu trữ</h3>
                     <p class="proj-excerpt">Xây dựng trật tự gọn gàng cho không gian học tập số thông qua 12 bước phân cấp tài liệu khoa học trên macOS.</p>
                 </div>
                 <div class="proj-footer">
@@ -1026,7 +1129,7 @@
             <!-- Bài 2 -->
             <div class="project-card" onclick="openProject(2)">
                 <div>
-                    <span class="proj-num blue">Bài tập 2 • Đánh giá nguồn học thuật</span>
+                    <span class="proj-num blue">Bài tập 2 • Đánh giá nguồn tài liệu học thuật</span>
                     <h3 class="proj-title">Thẩm định 10 Nguồn tài liệu ELT</h3>
                     <p class="proj-excerpt">Đánh giá khách quan độ tin cậy của 10 nghiên cứu khoa học giảng dạy ngoại ngữ theo 5 bộ tiêu chuẩn cốt lõi.</p>
                 </div>
@@ -1281,7 +1384,18 @@
                         </div>
                     </div>
 
-                    <h4>📂 Quy trình 12 bước thực hành chi tiết trên hệ điều hành macOS:</h4>
+                    <h4>📂 Sơ đồ cây thư mục thực tế của dự án:</h4>
+                    <div class="folder-tree">
+                        <span class="tree-folder">📁 Máy tính của tôi (Local Disk)</span><br>
+                        <div class="tree-item"><span class="tree-folder">📁 Thuchanh_DaoHuyenTrang</span> (Thư mục làm việc chính)</div>
+                        <div class="tree-item" style="margin-left: 40px;"><span class="tree-file">📄 GhiChuQuanTrong.txt</span> (Tệp văn bản quan trọng đã được đổi tên từ GhiChu.txt)</div>
+                        <div class="tree-item" style="margin-left: 40px;"><span class="tree-folder">📁 Tailieu</span> (Thư mục phân cấp con)</div>
+                        <div class="tree-item" style="margin-left: 60px;"><span class="tree-file">📄 GhiChuQuanTrong.txt</span> (Bản sao lưu trữ từ Command+V)</div>
+                        <div class="tree-item last"><span class="tree-trash">🗑️ Thùng rác (Trash)</span></div>
+                        <div class="tree-item last" style="margin-left: 40px;"><span class="tree-file" style="text-decoration: line-through;">📄 DiChuyen</span> (Tệp tạm thời đã được kéo thả để xóa sạch)</div>
+                    </div>
+
+                    <h4 style="margin-top: 25px;">📂 Quy trình 12 bước thực hành chi tiết trên hệ điều hành macOS:</h4>
                     <div style="font-size: 13.5px; line-height: 1.7;">
                         <ol style="padding-left: 20px;">
                             <li style="margin-bottom: 8px;"><strong>Bước 1 (Mở Finder):</strong> Khởi chạy công cụ quản lý tệp tin <em>Finder</em> (biểu tượng mặt cười đặc trưng trên macOS).</li>
@@ -1315,57 +1429,98 @@
                         </div>
                     </div>
 
-                    <h4>📊 Đánh giá chi tiết 10 nguồn tài liệu về phương pháp giảng dạy tiếng Anh (ELT):</h4>
-                    <div class="academic-grid">
-                        <div class="academic-card">
-                            <span class="academic-badge" style="background: var(--color-pink);">1. ScienceDirect</span>
-                            <p style="font-size: 12.5px; font-weight:700;">Sivarajah et al. (2019)</p>
-                            <p style="font-size: 11px; color: var(--text-muted);">Độ tin cậy cao xuất sắc. Nghiên cứu sâu về các phương pháp giảng dạy chủ động sáng tạo.</p>
+                    <h4>🔍 Trình khám phá 10 nguồn tài liệu tiếng Anh (ELT) đã qua thẩm định:</h4>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Dưới đây là bảng đánh giá sâu sắc của Đào Huyền Trang đối với 10 tài nguyên nghiên cứu hàng đầu:</p>
+                    
+                    <div class="source-grid">
+                        <div class="source-card-interactive">
+                            <span class="source-criteria-badge" style="background: var(--color-pink);">1. ScienceDirect</span>
+                            <h5>A review of innovative teaching methods</h5>
+                            <p class="citation">Sivarajah, R.T., Curci, N.E., Johnson, E.M., Lam, D.L., Lee, J.T. and Richardson, M.L. (2019)</p>
+                            <div class="source-commentary">
+                                <strong>Đánh giá của Trang:</strong> Tài liệu có độ tin cậy tuyệt đối nhờ được kiểm duyệt nghiêm ngặt qua ScienceDirect. Phân tích rất sâu các xu hướng học tập chủ động (active learning). Rất có giá trị để tham chiếu lý thuyết.
+                            </div>
                         </div>
-                        <div class="academic-card">
-                            <span class="academic-badge" style="background: var(--color-yellow);">2. Book</span>
-                            <p style="font-size: 12.5px; font-weight:700;">Westwood, P.S. (2008)</p>
-                            <p style="font-size: 11px; color: var(--text-muted);">Cơ sở lý thuyết kinh điển tuyệt vời, cực kỳ giá trị để định hình tư duy nhưng thiếu cập nhật công nghệ mới.</p>
+
+                        <div class="source-card-interactive">
+                            <span class="source-criteria-badge" style="background: var(--color-yellow);">2. Book</span>
+                            <h5>What teachers need to know about teaching methods</h5>
+                            <p class="citation">Westwood, P.S. (2008). Camberwell: ACER Press.</p>
+                            <div class="source-commentary">
+                                <strong>Đánh giá của Trang:</strong> Sách của chuyên gia uy tín, nhà xuất bản danh giá ACER Press. Cung cấp nền tảng lý thuyết sư phạm cực kỳ vững chắc, tuy nhiên có phần lỗi thời vì thiếu vắng các phương thức giảng dạy tích hợp AI hiện đại.
+                            </div>
                         </div>
-                        <div class="academic-card">
-                            <span class="academic-badge" style="background: var(--color-blue);">3. Case Study</span>
-                            <p style="font-size: 12.5px; font-weight:700;">Rahman & Alhaisoni (2013)</p>
-                            <p style="font-size: 11px; color: var(--text-muted);">Phân tích triển vọng, thách thức giảng dạy tại Ả Rập Xê Út, đem lại nhiều góc nhìn thực tiễn phong phú.</p>
+
+                        <div class="source-card-interactive">
+                            <span class="source-criteria-badge" style="background: var(--color-blue);">3. Case Study</span>
+                            <h5>Teaching in Saudi Arabia: Prospects and challenges</h5>
+                            <p class="citation">Rahman, M.M.U. and Alhaisoni, E. (2013)</p>
+                            <div class="source-commentary">
+                                <strong>Đánh giá của Trang:</strong> Nghiên cứu trường hợp cụ thể cung cấp bức tranh thực tế về các rào cản và cơ hội cải cách giáo dục tại vùng Trung Đông. Cần lưu ý khi áp dụng vì sự khác biệt văn hóa lớn.
+                            </div>
                         </div>
-                        <div class="academic-card">
-                            <span class="academic-badge" style="background: var(--color-green);">4. Foundations</span>
-                            <p style="font-size: 12.5px; font-weight:700;">Hirst, P.H. (1971)</p>
-                            <p style="font-size: 11px; color: var(--text-muted);">"What is teaching?". Nghiên cứu triết học kinh điển nền móng, tuy nhiên hiện tại đã quá cũ kỹ.</p>
+
+                        <div class="source-card-interactive">
+                            <span class="source-criteria-badge" style="background: var(--color-green);">4. Philosophical</span>
+                            <h5>What is teaching?</h5>
+                            <p class="citation">Hirst, P.H. (1971). Journal of Curriculum Studies, 3(1), pp. 5–18.</p>
+                            <div class="source-commentary">
+                                <strong>Đánh giá của Trang:</strong> Tài liệu triết học kinh điển, đặt nền móng cho định nghĩa "giảng dạy" trong hệ thống sư phạm thế giới. Hạn chế là tính cập nhật bằng không vì đã xuất bản cách đây hơn nửa thế kỷ.
+                            </div>
                         </div>
-                        <div class="academic-card">
-                            <span class="academic-badge" style="background: var(--color-pink);">5. AI Pedagogy</span>
-                            <p style="font-size: 12.5px; font-weight:700;">Author Unknown (2023)</p>
-                            <p style="font-size: 11px; color: var(--text-muted);">Đặc biệt giá trị. Xuất bản trên tạp chí BJET uy tín, đi đầu trong việc phân tích thách thức của AI trong lớp học.</p>
+
+                        <div class="source-card-interactive">
+                            <span class="source-criteria-badge" style="background: var(--color-pink);">5. AI Pedagogy</span>
+                            <h5>AI and English teaching: Affordances and challenges</h5>
+                            <p class="citation">Author Unknown (2023). British Journal of Educational Technology.</p>
+                            <div class="source-commentary">
+                                <strong>Đánh giá của Trang:</strong> Điểm tuyệt đối về tính cập nhật và thực tiễn. Nghiên cứu khai thác trực diện cơ hội và thách thức của AI trong lớp học ngoại ngữ hiện đại. Rất có giá trị để Trang ứng dụng vào phương pháp luận giảng dạy.
+                            </div>
                         </div>
-                        <div class="academic-card">
-                            <span class="academic-badge" style="background: var(--color-yellow);">6. China Study</span>
-                            <p style="font-size: 12.5px; font-weight:700;">Jin, L. & Cortazzi, M. (2002)</p>
-                            <p style="font-size: 11px; color: var(--text-muted);">Cái nhìn sâu sắc về cải cách phương pháp dạy tiếng Anh tại Trung Quốc nhưng cần cập nhật bối cảnh số.</p>
+
+                        <div class="source-card-interactive">
+                            <span class="source-criteria-badge" style="background: var(--color-yellow);">6. Regional</span>
+                            <h5>English language teaching in China: A bridge to the future</h5>
+                            <p class="citation">Jin, L. and Cortazzi, M. (2002). Asia Pacific Journal of Education.</p>
+                            <div class="source-commentary">
+                                <strong>Đánh giá của Trang:</strong> Nghiên cứu có hệ thống về sự chuyển mình của hệ thống giáo dục tiếng Anh tại Trung Quốc. Tuy nhiên, nội dung chưa cập nhật các yếu tố tích hợp công nghệ giảng dạy của những năm gần đây.
+                            </div>
                         </div>
-                        <div class="academic-card">
-                            <span class="academic-badge" style="background: var(--color-blue);">7. South Korea</span>
-                            <p style="font-size: 12.5px; font-weight:700;">Charles, Q.D. (2019)</p>
-                            <p style="font-size: 11px; color: var(--text-muted);">Nghiên cứu định tính chân thực về bản sắc nghề nghiệp của giáo viên bản xứ da màu tại Hàn Quốc.</p>
+
+                        <div class="source-card-interactive">
+                            <span class="source-criteria-badge" style="background: var(--color-blue);">7. Qualitative</span>
+                            <h5>Black teachers of English in South Korea</h5>
+                            <p class="citation">Charles, Q.D. (2019). TESOL Journal.</p>
+                            <div class="source-commentary">
+                                <strong>Đánh giá của Trang:</strong> Đăng tải trên tạp chí TESOL Journal danh giá. Khai thác sâu khía cạnh xã hội, tâm lý và bản sắc cá nhân của giáo viên bản ngữ da màu trong môi trường giáo dục châu Á. Rất giàu tính nhân văn.
+                            </div>
                         </div>
-                        <div class="academic-card">
-                            <span class="academic-badge" style="background: var(--color-green);">8. Malaysia</span>
-                            <p style="font-size: 12.5px; font-weight:700;">Kabilan, M.K. (2007)</p>
-                            <p style="font-size: 11px; color: var(--text-muted);">Nghiên cứu tính phản tư (reflection) của giáo viên trên tạp chí TESOL Quarterly danh giá.</p>
+
+                        <div class="source-card-interactive">
+                            <span class="source-criteria-badge" style="background: var(--color-green);">8. Reflection</span>
+                            <h5>English language teachers reflecting on reflections: A Malaysian experience</h5>
+                            <p class="citation">Kabilan, M.K. (2007). TESOL Quarterly.</p>
+                            <div class="source-commentary">
+                                <strong>Đánh giá của Trang:</strong> Nghiên cứu sâu sắc về quá trình tự phản phản tư của giáo viên tiếng Anh tại Malaysia. Mang lại bài học sư phạm đắt giá giúp các nhà giáo tương lai tự cải tiến năng lực liên tục.
+                            </div>
                         </div>
-                        <div class="academic-card">
-                            <span class="academic-badge" style="background: var(--color-pink);">9. Web Article</span>
-                            <p style="font-size: 12.5px; font-weight:700;">Ginting, D. (2021) [Web]</p>
-                            <p style="font-size: 11px; color: var(--text-muted);">Nghiên cứu về sự gắn kết của học viên qua phương pháp học tập chủ động, đăng tải trực tuyến.</p>
+
+                        <div class="source-card-interactive">
+                            <span class="source-criteria-badge" style="background: var(--color-pink);">9. Web Article</span>
+                            <h5>Student engagement, factors, and methods affecting active learning [Web]</h5>
+                            <p class="citation">Ginting, D. (2021). VELES: Voices of English Language Education Society.</p>
+                            <div class="source-commentary">
+                                <strong>Đánh giá của Trang:</strong> Phân tích tốt các yếu tố tác động đến động lực của học viên. Hạn chế là đường dẫn web có nguy cơ bị lỗi liên kết hỏng sau thời gian dài lưu trữ trực tuyến.
+                            </div>
                         </div>
-                        <div class="academic-card">
-                            <span class="academic-badge" style="background: var(--color-yellow);">10. DOI Version</span>
-                            <p style="font-size: 12.5px; font-weight:700;">Ginting, D. (2021) [DOI]</p>
-                            <p style="font-size: 11px; color: var(--text-muted);">Sử dụng mã định danh liên kết số DOI giúp bảo chứng thông tin bền vững thay cho link web thông thường.</p>
+
+                        <div class="source-card-interactive">
+                            <span class="source-criteria-badge" style="background: var(--color-yellow);">10. Persistent</span>
+                            <h5>Student engagement, factors, and methods affecting active learning [DOI]</h5>
+                            <p class="citation">Ginting, D. (2021). VELES: Voices of English Language Education Society.</p>
+                            <div class="source-commentary">
+                                <strong>Đánh giá của Trang:</strong> Phiên bản cải tiến học thuật hoàn hảo của nguồn số 9 nhờ tích hợp mã định danh liên kết số DOI cố định, bảo đảm thông tin khoa học được lưu giữ và tham chiếu bền vững trên Internet.
+                            </div>
                         </div>
                     </div>
                 `
@@ -1424,19 +1579,19 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <strong><td>Độ chính xác</td></strong>
-                                <td>Trung bình, câu từ chung chung, dễ bị lan man lan man không đúng ý chính.</td>
+                                <td><strong>Độ chính xác</strong></td>
+                                <td>Trung bình, câu từ chung chung, dễ bị lan man không đúng ý chính.</td>
                                 <td>Cao, bám rất sát theo các yêu cầu giới hạn đã cung cấp.</td>
                                 <td>Rất cao, hiểu chính xác ngữ cảnh chuyên môn phức tạp của lĩnh vực.</td>
                             </tr>
                             <tr>
-                                <strong><td>Định dạng đầu ra</td></strong>
+                                <td><strong>Định dạng đầu ra</strong></td>
                                 <td>Văn bản thuần túy, dài dòng, bố cục lộn xộn rất khó theo dõi.</td>
                                 <td>Có cấu trúc gạch đầu dòng rõ ràng, dễ nhìn.</td>
                                 <td>Chuyên nghiệp tối đa (tận dụng định dạng bảng, đề mục phân lớp trực quan).</td>
                             </tr>
                             <tr>
-                                <strong><td>Tính ứng dụng thực tế</td></strong>
+                                <td><strong>Tính ứng dụng thực tế</strong></td>
                                 <td>Còn thấp, người dùng phải tự chỉnh sửa và gọt giũa rất nhiều.</td>
                                 <td>Tốt, có thể copy và áp dụng thực tế được ngay cho công việc.</td>
                                 <td>Xuất sắc, hỗ trợ đắc lực cho hoạt động tư duy phân tích chiều sâu.</td>
@@ -1460,7 +1615,44 @@
                         </div>
                     </div>
 
-                    <h4>🛠 Sơ đồ tích hợp bộ ba công cụ cộng tác trực tiếp:</h4>
+                    <h4>📊 Trực quan bảng theo dõi tiến độ công việc trên ClickUp (Kanban Board):</h4>
+                    <div class="kanban-board">
+                        <div class="kanban-column todo">
+                            <h5>Cần làm (To Do) <span>(2)</span></h5>
+                            <div class="kanban-task todo">
+                                <p class="title">In ấn báo cáo & Đóng quyển</p>
+                                <p class="assignee">👤 Cả nhóm | Hạn: 18/6/2026</p>
+                            </div>
+                            <div class="kanban-task todo">
+                                <p class="title">Nộp bài tập lớn hoàn thiện</p>
+                                <p class="assignee">👤 Nhóm trưởng | Hạn: 19/6/2026</p>
+                            </div>
+                        </div>
+                        <div class="kanban-column inprogress">
+                            <h5>Đang làm (In Progress) <span>(2)</span></h5>
+                            <div class="kanban-task inprogress">
+                                <p class="title">Soạn thảo lý thuyết múa rối nước</p>
+                                <p class="assignee">👤 Thành viên A | Hạn: 15/6/2026</p>
+                            </div>
+                            <div class="kanban-task inprogress">
+                                <p class="title">Sắp xếp nội dung & Biên tập văn phong</p>
+                                <p class="assignee">👤 Trang (Lead) | Hạn: 14/6/2026</p>
+                            </div>
+                        </div>
+                        <div class="kanban-column done">
+                            <h5>Hoàn thành (Done) <span>(2)</span></h5>
+                            <div class="kanban-task done">
+                                <p class="title">Thiết lập dàn ý chi tiết báo cáo</p>
+                                <p class="assignee">👤 Trang (Lead) | Hoàn thành</p>
+                            </div>
+                            <div class="kanban-task done">
+                                <p class="title">Google Meet thống nhất phân công</p>
+                                <p class="assignee">👤 Cả nhóm | Hoàn thành</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 25px;">🛠 Quá trình tích hợp bộ ba công cụ cộng tác trực tiếp:</h4>
                     <div class="collab-timeline">
                         <div class="timeline-step">
                             <strong>1. Google Meet (Phòng họp số linh hoạt):</strong> 
@@ -1502,13 +1694,21 @@
 
                     <h4>🎨 Trình tự sử dụng công cụ AI trong sáng tạo nội dung:</h4>
                     <ul style="padding-left: 20px; font-size: 13.5px; line-height: 1.8;">
-                        <li><strong>Bước 1 - Tạo văn bản (ChatGPT):</strong> Sử dụng prompt chi tiết: <code>"Tôi muốn viết một bài blog sâu sắc về 'Hiệu ứng FOMO của giới trẻ trên mạng xã hội'. Hãy đóng vai là một chuyên gia tâm lý và sáng tạo nội dung, lập cho tôi một dàn ý chi tiết..."</code> Sau đó đặt tiếp prompt: <code>"Dựa trên dàn ý, hãy viết chi tiết phần 'Giải pháp vượt qua FOMO'. Lối văn gần gũi với Gen Z, độ dài khoảng 300 từ."</code></li>
+                        <li><strong>Bước 1 - Tạo văn bản (ChatGPT):</strong> Sử dụng prompt chi tiết: <code>"Tôi muốn viết một bài blog về chủ đề 'Hiệu ứng FOMO của giới trẻ trên mạng xã hội'. Hãy lập một dàn ý chi tiết gồm: Mở bài, 3 phần thân bài (Biểu hiện, Hệ lụy, Giải pháp), và Kết bài."</code></li>
                         <li><strong>Bước 2 - Sáng tạo hình ảnh (Gemini/ImageFX):</strong> Đặt câu lệnh minh họa tâm lý: <code>"Tạo một bức ảnh minh họa sự cô đơn/lo lắng của một người khi nhìn vào điện thoại. Ánh sáng u buồn ám lên gương mặt, căn phòng u ám, chi tiết chỉn chu."</code> để tạo bức ảnh độ nét cao lột tả chân thực trạng thái của Gen Z.</li>
                         <li><strong>Bước 3 - Thiết kế ấn phẩm (Canva AI):</strong> Đặt lệnh bố cục thông minh: <code>"Thiết kế banner bài viết về hội chứng FOMO mạng xã hội, phong cách tối giản, tông màu trầm."</code> thu về gợi ý dải màu u sầu phù hợp với chủ đề bài học.</li>
                     </ul>
 
-                    <h4>🧠 Sự can thiệp sáng tạo độc quyền của bản thân (Tích hợp đầu ra AI):</h4>
-                    <p style="margin-top: 10px;">
+                    <h4>✍️ Tác phẩm Blog hoàn chỉnh sau khi Trang tinh chỉnh và lồng ghép cảm xúc cá nhân:</h4>
+                    <div style="background: #fff; border: 1.5px solid var(--color-pink-dark); padding: 20px; border-radius: 20px; margin-top: 15px; font-size: 13.5px; line-height: 1.8;">
+                        <h5 style="color: var(--color-pink-dark); margin-bottom: 10px; font-size: 16px;">Giải pháp vượt qua FOMO: Học cách sống theo nhịp của chính mình</h5>
+                        <p style="margin-bottom: 12px;"><strong>FOMO (Fear Of Missing Out)</strong> không phải là điều gì quá xa lạ với giới trẻ ngày nay. Chỉ cần vài phút lướt mạng xã hội, chúng ta có thể thấy bạn bè đi du lịch, đạt thành tích mới hay sở hữu những món đồ đang là xu hướng. Tuy nhiên, điều quan trọng cần nhớ là mạng xã hội chỉ phản ánh một phần rất nhỏ của cuộc sống. Hầu hết mọi người đều có xu hướng chia sẻ những khoảnh khắc đẹp nhất, chứ không đăng tải những áp lực, thất bại hay khó khăn phía sau. Vì vậy, đừng vội cho rằng cuộc sống của người khác luôn hoàn hảo hơn mình.</p>
+                        <p style="margin-bottom: 12px;"><strong>Một cách hiệu quả để giảm FOMO là giới hạn thời gian sử dụng mạng xã hội.</strong> Thay vì mở điện thoại mỗi khi rảnh, hãy thử dành thời gian cho những hoạt động thực tế như đọc sách, tập thể dục hoặc gặp gỡ bạn bè. Đôi khi, việc "offline" một chút lại giúp chúng ta kết nối với cuộc sống thật nhiều hơn.</p>
+                        <p style="font-weight: 700; color: var(--text-dark);">Trang chia sẻ: "Có những đêm mình thức lướt mạng đến tận 2 giờ sáng chỉ vì sợ bỏ lỡ một tin tức hay một câu chuyện giật gân của bạn bè. Mình hiểu cảm giác lo lắng, bồn chồn của các bạn. Nhưng chỉ khi tắt máy và hít một hơi thật sâu, mình mới nhận ra cuộc sống của mình nằm ở thế giới thực, chứ không phải qua màn hình điện thoại."</p>
+                    </div>
+
+                    <h4 style="margin-top: 25px;">🧠 Sự can thiệp sáng tạo độc quyền của bản thân (Tích hợp đầu ra AI):</h4>
+                    <p style="font-size: 13.5px; line-height: 1.8;">
                         • <strong>Về nội dung:</strong> Lọc bỏ toàn bộ những từ sáo rỗng quen thuộc của AI (như "Trong kỷ nguyên số...", "Tóm lại..."). Trang đã chủ động lồng ghép trải nghiệm cá nhân (đã từng thức lướt mạng xã hội đến 2 giờ sáng vì sợ tối cổ) để tạo ra sự đồng cảm và chiều sâu cảm xúc thực tế cho người xem.<br>
                         • <strong>Về thiết kế:</strong> Tự tay căn chỉnh khoảng cách chữ (kerning), thay thế font mặc định của Canva bằng nét mảnh tinh tế, sáng tạo dòng tựa đề: <em>"FOMO: Bạn đang sống đời mình hay đang sống qua màn hình của người khác?"</em>.
                     </p>
@@ -1524,19 +1724,19 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <strong><td>ChatGPT</td></strong>
+                                <td><strong>ChatGPT</strong></td>
                                 <td>Gợi ý cấu trúc dàn ý cực kỳ nhanh, phân tích logic hành vi tốt.</td>
                                 <td>Văn phong thô cứng, sử dụng nhiều cụm từ sáo rỗng lặp lại liên tục.</td>
                             </tr>
                             <tr>
-                                <strong><td>Gemini / ImageFX</td></strong>
+                                <td><strong>Gemini / ImageFX</strong></td>
                                 <td>Hiểu prompt tiếng Việt chính xác, mô phỏng biểu cảm khuôn mặt cực sâu.</td>
                                 <td>Hình ảnh đôi khi còn gặp lỗi ở chi tiết vật lý nhỏ (tỷ lệ ngón tay chưa tự nhiên).</td>
                             </tr>
                             <tr>
-                                <strong><td>Canva AI</td></strong>
-                                <td>Đề xuất bố cục chữ và cách phối màu u buồn cực tốt.</td>
-                                <td>Văn bản tự động trên banner thường bị lỗi lỗi font tiếng Việt nghiêm trọng.</td>
+                                <td><strong>Canva AI</strong></td>
+                                <td>Đề xuất bối cảnh chữ và cách phối màu u buồn cực tốt.</td>
+                                <td>Văn bản tự động trên banner thường bị lỗi font tiếng Việt nghiêm trọng.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1571,31 +1771,78 @@
                         • <strong>Kiểm chứng tư duy (Human Critical Thinking):</strong> AI đưa ra các thông tin khái quát về thế kỷ XI (thời nhà Lý), Đồng bằng sông Hồng. Để bảo đảm tính học thuật khắt khe, Trang đã trực tiếp lên <em>Google Scholar</em> để tra cứu, kiểm chứng chi tiết lịch sử ghi khắc trên <strong>Bia Sùng Thiện Diên Linh</strong> (tại chùa Đọi, Hà Nam), bảo đảm bài luận chuẩn xác khoa học tối đa trước khi công bố và ghi rõ lời khai báo sử dụng trợ giúp từ ChatGPT.
                     </p>
 
-                    <h4>✨ Bộ 6 nguyên tắc vàng của Đào Huyền Trang để học tập liêm chính:</h4>
-                    <div class="ethics-grid">
-                        <div class="ethic-item" style="background-color: var(--color-pink);">
-                            <h5>1. Tư duy đi trước</h5>
-                            <p style="font-size:12px;">Human-First: Luôn tự đọc sách, nghiên cứu tài liệu và lên ý tưởng phác thảo cá nhân trước khi mở AI.</p>
+                    <h4>✨ Nhấp chuột vào từng thẻ để khám phá bộ 6 nguyên tắc vàng của Đào Huyền Trang:</h4>
+                    <div class="flip-card-grid">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span style="font-size: 24px;">🧠</span>
+                                    <h5>1. Tư duy đi trước</h5>
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Luôn tự mình suy nghĩ, đọc tài liệu và tự lên dàn ý cá nhân độc lập trước khi tìm đến sự hỗ trợ hay gợi ý cấu trúc từ AI.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ethic-item" style="background-color: var(--color-yellow);">
-                            <h5>2. Bảo chứng thông tin</h5>
-                            <p style="font-size:12px;">Fact-Checking: Tuyệt đối không thừa nhận mù quáng số liệu của AI mà không đối chiếu qua thư viện VNU.</p>
+
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="border-color: var(--color-yellow-dark);">
+                                    <span style="font-size: 24px;">🔍</span>
+                                    <h5>2. Bảo chứng thông tin</h5>
+                                </div>
+                                <div class="flip-card-back" style="background-color: var(--color-yellow);">
+                                    <p>Không thừa nhận mù quáng bất kỳ số liệu hay nguồn trích dẫn nào do AI đưa ra mà chưa qua đối chiếu, kiểm chứng thực tế.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ethic-item" style="background-color: var(--color-blue);">
-                            <h5>3. Không copy-paste</h5>
-                            <p style="font-size:12px;">No Copy-Paste: Paraphrase mọi nội dung do AI đề xuất bằng chính ngôn ngữ, văn phong và sự hiểu biết của mình.</p>
+
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="border-color: var(--color-blue-dark);">
+                                    <span style="font-size: 24px;">✍️</span>
+                                    <h5>3. Không copy-paste</h5>
+                                </div>
+                                <div class="flip-card-back" style="background-color: var(--color-blue);">
+                                    <p>Diễn đạt lại (paraphrase) mọi ý tưởng do AI đề xuất bằng chính ngôn ngữ, văn phong và sự hiểu biết thực sự của mình.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ethic-item" style="background-color: var(--color-green);">
-                            <h5>4. Minh bạch công cụ</h5>
-                            <p style="font-size:12px;">Transparency: Thành thật ghi chú rõ ràng loại AI và cách thức ứng dụng AI ở phần cuối của tất cả các bài tập.</p>
+
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="border-color: var(--color-green-dark);">
+                                    <span style="font-size: 24px;">📢</span>
+                                    <h5>4. Minh bạch công cụ</h5>
+                                </div>
+                                <div class="flip-card-back" style="background-color: var(--color-green);">
+                                    <p>Chủ động và trung thực ghi rõ sự hỗ trợ của các công cụ trí tuệ nhân tạo ở phần cuối của tất cả các bài tập lớn.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ethic-item" style="background-color: #ffdce8;">
-                            <h5>5. Tập trung tiến bộ</h5>
-                            <p style="font-size:12px;">Skill-Oriented: Chỉ sử dụng AI để học hỏi phương pháp tư duy và cải thiện từ vựng, không sử dụng để trốn tránh việc học.</p>
+
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span style="font-size: 24px;">🚀</span>
+                                    <h5>5. Tập trung tiến bộ</h5>
+                                </div>
+                                <div class="flip-card-back">
+                                    <p>Chỉ coi AI là trợ lý đồng hành để cải thiện năng lực tự học và mở rộng từ vựng mới, không lạm dụng để đối phó deadline.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ethic-item" style="background-color: #fffae0;">
-                            <h5>6. Bảo mật dữ liệu</h5>
-                            <p style="font-size:12px;">Data Privacy: Tuyệt đối không tải lên các tài liệu học tập chưa công bố hoặc thông tin bảo mật cá nhân lên mạng AI công cộng.</p>
+
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front" style="border-color: var(--color-yellow-dark);">
+                                    <span style="font-size: 24px;">🛡️</span>
+                                    <h5>6. Bảo mật dữ liệu</h5>
+                                </div>
+                                <div class="flip-card-back" style="background-color: var(--color-yellow);">
+                                    <p>Không tải lên các tài liệu học tập chưa công bố hoặc thông tin cá nhân của giảng viên và bạn bè lên mạng AI công cộng.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `
